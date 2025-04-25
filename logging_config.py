@@ -6,7 +6,7 @@ from logging_loki import LokiHandler
 load_dotenv()
 
 handler = LokiHandler(
-    url=os.getenv("URL_LOKI"),  # URL do Loki
+    url=os.getenv("URL_LOKI","http://localhost:3100/loki/api/v1/push"),  # URL do Loki
     tags={"application": "V.A.L.O.R"},  # Tags para identificar os logs
     version="1",  # Versão da API do Loki
 )

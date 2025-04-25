@@ -6,6 +6,35 @@ O objetivo é ajudar os usuários a tomar decisões assertivas, organizar tarefa
 
 ---
 
+## 🚀Iniciando projeto
+
+### Requisitos:
+    - Python
+    - Docker
+
+1. Criar ambiente virtual
+
+~~~bash
+    python -m venv .venv
+    source .venv/bin/activate
+~~~
+
+2. Definir arquivo de variaveis de ambiente:
+
+    - DISCORD_TOKEN: Token do Bot no Discord
+    - URL_LOKI: Link de envio dos logs para o Loki.
+
+~~~bash
+    .env
+~~~
+3. Rodar script de inicialização
+
+~~~bash
+    source startup.sh
+~~~
+
+---
+
 ## 🚀 Funcionalidades
 
 
