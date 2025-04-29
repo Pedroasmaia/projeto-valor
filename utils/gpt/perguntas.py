@@ -9,7 +9,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_TOKEN")
 
 
-def pergunta_command(msg: str, max_tentativas=10, intervalo=1) -> str:
+def pergunta_command(msg: str) -> str:
     # 1. Cria uma nova thread
     try:
         logger.info("Criando Thread")

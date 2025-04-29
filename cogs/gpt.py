@@ -8,7 +8,7 @@ class GPT(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def perguntar(self, ctx, * ,msg: str):
+    async def perguntar(self, ctx, * ,msg: str,name="$perguntar"):
         logger.info("Executando comando $perguntar")
         try:
             discord_id = ctx.author.id
@@ -18,7 +18,7 @@ class GPT(commands.Cog):
                 query = f'''
                 SELECT qtd_perguntar FROM users WHERE id_discord == {discord_id}
                 '''
-                user = runner_query(query,'$perguntar')
+                user = runner_query(query,name)
                 if user[0][0] == 0:
                     query = '''
                     INSERT INTO users (id_discord, name, qtd_perguntar)
@@ -26,7 +26,7 @@ class GPT(commands.Cog):
                     '''
                     values = (discord_id, ctx.author.name, 1)
                     try:
-                        runner_query(query,'$perguntar',values)
+                        runner_query(query,name,values)
                     except Exception as e:
                         logger.info(e)
                 else:
@@ -38,7 +38,7 @@ class GPT(commands.Cog):
                     '''
                     values = (user[0][0]+1,discord_id)
                     try:
-                        runner_query(query,'$perguntar',values)
+                        runner_query(query,name,values)
                     except Exception as e:
                         logger.warning(f"Não foi possivel executar a query de atualização de valores: {e}")
             except Exception as e:
