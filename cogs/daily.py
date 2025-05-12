@@ -31,21 +31,16 @@ class Daily(commands.Cog):
                         '''
                         id_valor = id_valor[0][0]
                         values = (id_valor,msg,)
-                        try:
-                            runner_query(query,name,values)            
-                            await ctx.author.send(f'{random.choice(incentive_phrases)}')
-                        except Exception as e:
-                            logger.warning(e)
+                        runner_query(query,name,values)            
+                        await ctx.author.send(f'{random.choice(incentive_phrases)}')
                     else:
                         query = '''
                         INSERT INTO users (id_discord, name, qtd_perguntar)
                         VALUES (?, ?,?);
                         '''
                         values = (ctx.author.id, ctx.author.name, 1)
-                        try:
-                            runner_query(query,name,values)
-                        except Exception as e:
-                            logger.info(e)
+                        runner_query(query,name,values)
+
                     
                 except Exception as e:
                     logger.warning(f"Não foi possivel enviar mensagem no privado: {e}")
