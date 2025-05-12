@@ -31,3 +31,12 @@ users = '''
         create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 '''  
+daily_db = '''
+CREATE TABLE IF NOT EXISTS daily (
+    id_daily INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    daily_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id_valor)
+);
+'''

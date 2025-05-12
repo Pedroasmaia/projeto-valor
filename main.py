@@ -4,7 +4,7 @@ from discord.ext import commands
 from dotenv import load_dotenv  # opcional, se estiver usando .env
 import asyncio
 from logging_config import logger
-from database_config import users, runner_query
+from database_config import users, daily_db, runner_query
 
 # Carrega variáveis de ambiente (caso use .env)
 load_dotenv()
@@ -25,8 +25,11 @@ async def setup(name='setup'):
     await bot.load_extension("cogs.ping")  # aqui você carrega todos os cogs
     await bot.load_extension("cogs.inspire")
     await bot.load_extension("cogs.gpt")
+    await bot.load_extension("cogs.daily")
     logger.info("Criando banco de dados")
+    runner_query("PRAGMA foreign_keys = ON",name)
     runner_query(users,name)
+    runner_query(daily_db,name)
     logger.info("Iniciando bot VALOR...")
     await bot.start(os.getenv("DISCORD_TOKEN"))
 # Executa o setup assíncrono
