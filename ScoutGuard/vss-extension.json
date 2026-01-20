@@ -1,0 +1,42 @@
+{
+  "manifestVersion": 1,
+  "id": "scoutguard",
+  "name": "ScoutGuard",
+  "publisher": "seu-publicador",
+  "version": "0.1.0",
+  "description": "Task do Azure DevOps para executar o Docker Scout e gerar relatório JSON de CVEs.",
+  "categories": ["Azure Pipelines"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/scoutguard-icon.svg"
+  },
+  "files": [
+    {
+      "path": "tasks/scoutguard"
+    },
+    {
+      "path": "images"
+    },
+    {
+      "path": "README.md"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "scoutguard-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        {
+          "id": "ms.vss-distributed-task.tasks"
+        }
+      ],
+      "properties": {
+        "name": "tasks/scoutguard"
+      }
+    }
+  ]
+}

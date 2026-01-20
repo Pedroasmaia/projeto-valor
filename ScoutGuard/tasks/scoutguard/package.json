@@ -1,0 +1,10 @@
+{
+  "name": "scoutguard-task",
+  "version": "0.1.0",
+  "description": "Azure DevOps task para executar o Docker Scout.",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.11.0"
+  }
+}

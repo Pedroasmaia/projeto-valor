@@ -1,0 +1,55 @@
+{
+  "id": "bba14378-0a51-4d15-9f71-25e9e8f8dd6f",
+  "name": "ScoutGuard",
+  "friendlyName": "ScoutGuard - Docker Scout CVEs",
+  "description": "Executa o Docker Scout após o build para gerar um relatório JSON de CVEs.",
+  "author": "ScoutGuard",
+  "helpMarkDown": "Use após o docker build para analisar CVEs na imagem.",
+  "category": "Utility",
+  "visibility": ["Build", "Release"],
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "ScoutGuard: $(imageName)",
+  "inputs": [
+    {
+      "name": "imageName",
+      "type": "string",
+      "label": "Nome da imagem",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Nome/tag da imagem Docker (ex: minha-imagem:latest)."
+    },
+    {
+      "name": "outputPath",
+      "type": "string",
+      "label": "Caminho do relatório JSON",
+      "defaultValue": "scout-report.json",
+      "required": true,
+      "helpMarkDown": "Caminho para salvar o JSON. Pode ser relativo ao workspace."
+    },
+    {
+      "name": "installScout",
+      "type": "boolean",
+      "label": "Instalar Docker Scout se não estiver disponível",
+      "defaultValue": "true",
+      "required": true,
+      "helpMarkDown": "Baixa e instala o Docker Scout CLI caso o comando não exista."
+    },
+    {
+      "name": "additionalArgs",
+      "type": "string",
+      "label": "Argumentos adicionais",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Argumentos extras passados ao comando docker scout cves."
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "index.js"
+    }
+  }
+}
